@@ -31,7 +31,7 @@ function filterByQuery(query, animalsArray) {
     }
     // Loop through each trait in the personalityTraits array
     personalityTraitsArray.forEach(trait => {
-      // check the trait against each animal in the filteredREsults array
+      // check the trait against each animal in the filteredResults array
       // Remember, it is initially a copy of the animalsArray,
       // but here we're updating it for each trait in the .forEach() loop
       // For each trait being targeted by the filter, the filteredResults
@@ -104,10 +104,13 @@ function validateAnimal(animal) {
 // add the route - get requires two arguments 
 // 1. a string describing the route the client will fetch from
 // 2. a callback function that will execute every time that the route is accessed with a GET request
-// the .send method on the res parameter sends the string to the client
+// the .json method on the res parameter sends the string to the client
 app.get('/api/animals', (req, res) => {
   let results = animals;
   if (req.query) {
+    // filterByQuery needs two parameters, req.query and the existing animals results array.
+    // The two need to be checked against each other to see if we have an animal in the results array
+    // that fits the restrictions dictated by the query (in req.query)
     results = filterByQuery(req.query, results);
   }
   res.json(results);
@@ -115,6 +118,7 @@ app.get('/api/animals', (req, res) => {
 
 // GET route for animals for one specific animal wanted 
 // param routes must come AFTER other GET routes.
+// end of URL and param.___ need to match
 app.get('/api/animals/:id', (req, res) => {
   const result = findById(req.params.id, animals);
   if (result){
