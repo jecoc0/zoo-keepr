@@ -15,7 +15,7 @@
       "id": "1",
       "name": "Terry",
       "species": "gorilla",
-      "diet": "omnivore",
+      "diet": "folivore",
       "personalityTraits": [
         "anxious",
         "goofy"
@@ -25,7 +25,7 @@
       "id": "2",
       "name": "Erica",
       "species": "gorilla",
-      "diet": "omnivore",
+      "diet": "folivore",
       "personalityTraits": [
         "quirky",
         "rash"
@@ -46,7 +46,7 @@
       "id": "4",
       "name": "Coco",
       "species": "penguin",
-      "diet": "herbivore",
+      "diet": "piscivore",
       "personalityTraits": [
         "loving",
         "goofy"
@@ -101,11 +101,11 @@
       ]
     },
     {
-      "name": "Sufjan",
-      "species": "Koala Bear",
-      "diet": "herbivore",
+      "name": "Larry",
+      "species": "lemur",
+      "diet": "omnivore",
       "personalityTraits": [
-        "loving"
+        "hungry"
       ],
       "id": "10"
     }
