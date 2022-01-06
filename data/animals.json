@@ -108,6 +108,16 @@
         "hungry"
       ],
       "id": "10"
+    },
+    {
+      "name": "John",
+      "species": "Python",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "zany",
+        "anxious"
+      ],
+      "id": "11"
     }
   ]
 }

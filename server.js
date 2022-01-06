@@ -15,6 +15,16 @@ app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
 
+// set up Express.js middleware that instructs the server to make certain 
+// files readily available and to not gate it behind server endpoint
+// we will use this for our CSS and HTML
+// we provide a file path to a location in our application and instruct
+// the server to make these files static resources.
+// This means that all of our front-end code can now be accessed without 
+// having a specific server endpoint created for it.
+app.use(express.static('public'));
+
+
 // handle filtering in a separate function -- 
 // method built into Express.js that converts POST data to key/value pairings
 function filterByQuery(query, animalsArray) {
@@ -144,6 +154,31 @@ app.post('/api/animals', (req, res) => {
 
     res.json(animal);
   }
+});
+
+// the / route points us to the route of the server so we can create a homepage for our server.
+// this GET route has only one job to do, and that is to respond with an html
+// page to display in the browser so we are using res.sendFile() instead of res.json()
+// all we need to do is tell them where to find the file we want the server to read and send
+// back to the client.
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+// routes beginning with api/animals should transfer JSON data
+// normal looking endpoints such as /animals should serve an HTML page
+// this routes and serves up animals.html
+app.get('/animals', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/animals.html'))
+});
+// this routes and serves up zookeepers.html
+app.get('/zookeepers', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+// * acts as a wildcard, any route that wasn't previously definted will be handled by this route
+// the * route should always come last, otherwise, it will take precedence over named routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'))
 });
 
 // tell the server to listen for requests
