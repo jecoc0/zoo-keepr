@@ -118,6 +118,18 @@
         "anxious"
       ],
       "id": "11"
+    },
+    {
+      "name": "Franklin",
+      "species": "Dog",
+      "diet": "omnivore",
+      "personalityTraits": [
+        "hungry",
+        "anxious",
+        "loving",
+        "goofy"
+      ],
+      "id": "12"
     }
   ]
 }
